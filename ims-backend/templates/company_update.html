@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Company</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Update Company</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 border p-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_name" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="id_name" name="name" value="{{ form.name.value }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_address" class="form-label">Address</label>
+                    <textarea class="form-control" id="id_address" name="address">{{ form.address.value }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="id_city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="id_city" name="city" value="{{ form.city.value }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="id_phone" name="phone" value="{{ form.phone.value }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="id_email" name="email" value="{{ form.email.value }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{% url 'company' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

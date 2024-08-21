@@ -1,0 +1,125 @@
+<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"><span class="navbar-toggler-icon"></span></button>
+    <h1 class="navbar-brand navbar-brand-autodark"><a href="."></a></h1>
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="navbar-nav pt-lg-3">
+
+          <div class="d-flex justify-content-start mx-5">
+              <ul class="nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: inherit;">
+                          <span class="nav-link-title"><h1>IMS</h1></span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+
+
+
+        <div>
+          <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+              <span class="nav-link-title">Category</span>
+
+            </a>
+          </li>
+        </div>
+
+
+        <div>
+          <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'final_cart' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+              <span class="nav-link-title">Order</span>
+            </a>
+          </li>
+        </div>
+
+        <div>
+          <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'product' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+              <span class="nav-link-title">Product</span>
+            </a>
+          </li>
+        </div>
+
+        <div>
+          <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'unit' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+              <span class="nav-link-title">Unit</span>
+            </a>
+          </li>
+        </div>
+
+        <div>
+          <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'stock' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+              <span class="nav-link-title">Stock</span>
+            </a>
+          </li>
+        </div>
+
+        <div>
+          <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category_list' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+              <span class="nav-link-title">Sales</span>
+            </a>
+          </li>
+        </div>
+
+        <!-- Navigation for Regular Users -->
+{% if user.is_authenticated and not user.is_staff %}
+<div>
+  <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'return_product' %}">
+      <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+      <span class="nav-link-title">Return Product</span>
+    </a>
+  </li>
+</div>
+
+<div>
+  <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'return_status' %}">
+      <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from https://tabler-icons.io/i/home --></span>
+      <span class="nav-link-title">Return Status</span>
+    </a>
+  </li>
+</div>
+{% endif %}
+
+<!-- Navigation for Admin Users -->
+{% if user.is_staff %}
+<div>
+  <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'admin_return_status' %}">
+      <span class="nav-link-icon d-md-none d-lg-inline-block"></span>
+      <span class="nav-link-title">Check Return Status</span>
+    </a>
+  </li>
+</div>
+{% endif %}
+
+        
+
+
+
+      </ul>
+    </div>
+  </div>
+</aside>

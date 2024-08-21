@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Index
+{% endblock title %}
+
+{% block body %}
+<!-- Display success message -->
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+  {% include "components/card.html" with title="Hello" link="#" content="<h1></h1>" %}
+{% endblock body %}
+

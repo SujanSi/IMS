@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+{% block body %}
+<div class="container">
+
+    <div class="m-1 border-2 rounded-b-3xl card card-size mt-3">
+    
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">Add Product to Cart</h4><br>
+            <form method="post" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <div class="form-group ">
+                    <label for="product_id">Product</label><br>
+                    <select name="product_id" id="product_id" class="form-control" required>
+                        <option value="">Select a product</option>
+                        {% for item in products_with_stock %}
+                        <option value="{{ item.product.id }}">{{ item.product.name }} - Available: {{ item.available_stock }} {{ item.product.unit.name }} -  - Price: {{ item.price }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group"><br>
+                    <label for="unit_name">Unit (e.g., kg, gram, pound)</label>
+                    <select name="unit_name" id="unit_name" class="form-control" required>
+                        <option value="">Select Unit</option>
+                        {% for unit in units %}
+                            <option value="{{ unit.name }}">{{ unit.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group mb-1"><br>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control" min="1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

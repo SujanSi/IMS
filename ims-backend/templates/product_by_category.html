@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products in {{ category.name }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Products in {{ category.name }}</h2>
+        <div class="row">
+            {% for products in product %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ products.name }}</h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text"><strong>Price:</strong> {{ products.price }}</p>
+                        <form method="post" action="{% url 'add_to_cart' products.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

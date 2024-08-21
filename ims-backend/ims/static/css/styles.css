@@ -1,0 +1,9 @@
+.card-size {
+  min-height: 80vh;
+
+  margin: 30px;
+}
+
+.avatar-image{
+  background-image: url('https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg')
+}

@@ -1,0 +1,312 @@
+<div class="m-3 border-2 rounded-b-3xl card card-size">
+    <!-- django-lint: disable=H021 -->
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="card-title">
+            <b><h4 class="display-6">{{ title }}, {{ user.username }}</h4></b>
+        </div>
+        
+    </div>
+    <div class="card-content px-4">
+        {{ content }}
+    </div>
+
+
+<div class="row row-deck row-cards">
+  <div class="col-sm-6 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="subheader">Category</div>
+          <div class="ms-auto lh-1">
+            <div class="dropdown">
+              
+            
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mb-2">
+          <div class="ms-auto">
+          </div>
+        </div>
+        <div class="viewing mt-4"><a href="{% url 'category' %}">View</a></div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  
+
+
+  <div class="col-sm-6 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="subheader">Stock</div>
+          <div class="ms-auto lh-1">
+            <div class="dropdown">
+              
+              
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mb-2">
+          <div class="ms-auto">
+          </div>
+        </div>
+        <div class="viewing mt-4"><a href="{% url 'stock' %}">View</a></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="subheader">Order</div>
+          <div class="ms-auto lh-1">
+            <div class="dropdown">
+
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mb-2">
+          <div class="ms-auto">
+          </div>
+        </div>
+        <div class="viewing mt-4"><a href="{% url 'final_cart' %}">View</a></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="subheader">Sales</div>
+          <div class="ms-auto lh-1">
+            <div class="dropdown">
+              
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mb-2">
+          <div class="ms-auto">
+          </div>
+        </div>
+        <div class="viewing mt-4"><a href="{% url 'category_list' %}">View</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="subheader">Product</div>
+          <div class="ms-auto lh-1">
+            <div class="dropdown">
+              
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mb-2">
+          <div class="ms-auto">
+          </div>
+        </div>
+        <div class="viewing mt-4"><a href="{% url 'product' %}">View</a></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-sm-6 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="subheader">Unit</div>
+          <div class="ms-auto lh-1">
+            <div class="dropdown">
+              
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mb-2">
+          <div class="ms-auto">
+          </div>
+        </div>
+        <div class="viewing mt-4"><a href="{% url 'unit' %}">View</a></div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+  <div class="col-12">
+    <div class="row row-cards">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2"></path><path d="M12 3v3m0 12v3"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                  Products
+                </div>
+                <div class="text-secondary">
+                  {{ total_products }} Products Available
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><path d="M17 17h-11v-14h-2"></path><path d="M6 5l14 1l-1 7h-13"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                  Orders
+                </div>
+                <div class="text-secondary">
+                  {{ total_order_items }} Orders Made
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-twitter text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                Companies
+                </div>
+                <div class="text-secondary">
+                  {{ total_companies }} Companies Registered
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between mt-3 me-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div id="chart-demo-pie">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div id="chart-demo-bar">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <script>
+        // Pie Chart
+        var pieCtx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: {{ chart_labels|safe }},
+                datasets: [{
+                    label: 'Counts',
+                    data: {{ chart_values|safe }},
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+              aspectRatio: 2,
+                plugins: {
+                    legend: {
+                        position: 'bottom', // Position legend at the bottom
+                        labels: {
+                            boxWidth: 40, // Adjust width of legend box if needed
+                            usePointStyle: true // Use point style for legend markers
+                        }
+                    }
+                }
+            }
+        });
+
+        // Bar Chart
+        var barCtx = document.getElementById('barChart').getContext('2d');
+        var barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: {{ chart_labels|safe }},
+                datasets: [{
+                    label: 'Counts',
+                    data: {{ chart_values|safe }},
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+              aspectRatio: 2,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>

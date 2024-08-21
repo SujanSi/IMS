@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title></title>
+  </head>
+  <body>
+
+
+    <h1 class="text-center">Company List</h1>
+            <div class="container">
+              <div class="d-flex justify-content-end mb-2">
+                  <a href="{% url 'company_create' %}">+ ADD</a>
+              </div>
+              <div class="row justify-content-between align-items-center mb-2">
+                  <div class="col-auto d-flex align-items-center">
+                      <div>Show</div>
+                      <div class="dropdown mx-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="entriesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ items_per_page }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="entriesDropdown">
+                            <a class="dropdown-item" href="?page={{ page_obj.number }}&items_per_page=3">3</a>
+                            <a class="dropdown-item" href="?page={{ page_obj.number }}&items_per_page=5">5</a>
+                            <a class="dropdown-item" href="?page={{ page_obj.number }}&items_per_page=10">10</a>
+                            <a class="dropdown-item" href="?page={{ page_obj.number }}&items_per_page=20">20</a>
+                        </div>
+                    </div>
+                      <div>entries</div>
+                  </div>
+
+
+                  <div class="col-auto">
+                      <form class="form-inline my-2 my-lg-0">
+                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                  </div>
+              </div>
+      
+        <div class="row justify-content-center">
+        <div class="col-lg-12">
+    <table class="table table-bordered table-hover w-100 border-1-solid-black">
+        <thead>
+          <tr>
+            <th scope="col">S.N</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col" colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for company in page_obj %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ company.name }}</td>
+            <td>{{company.address}}</td>
+            <td>{{company.city}}</td>
+            <td>{{company.email}}</td>
+            <td>{{company.phone}}</td>
+            <td>
+              <a href="{% url 'company_update' company.pk %}" class="text-decoration-none text-secondary mr-3">
+                <i class="fas fa-edit"></i>
+            </a>
+            <form action="{% url 'company_delete' company.pk %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="text-decoration-none text-danger" style="border:none; background:none; padding:0;">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </form>
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+<!-- Pagination controls -->
+<nav aria-label="Page navigation">
+  <div class="d-flex justify-content-between">
+      <div>
+          Showing {{ page_obj.start_index }} - {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries.
+      </div>
+      <ul class="pagination">
+          {% if page_obj.has_previous %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                      <span aria-hidden="true">Previous Page</span>
+                  </a>
+              </li>
+          {% else %}
+              <li class="page-item disabled">
+                  <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">Previous Page</span>
+                  </a>
+              </li>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                  <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+              {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+                  <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+              {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                      <span aria-hidden="true">Next Page</span>
+                  </a>
+              </li>
+          {% else %}
+              <li class="page-item disabled">
+                  <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">Next Page</span>
+                  </a>
+              </li>
+          {% endif %}
+      </ul>
+  </div>
+</nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="pcwlsmeN0EBvwhdFYnYs1e7H3vMqhHBNPE0xRhOF" />
+    <meta name="description" content="Your meta description here" />
+    <meta name="keywords" content="keyword1, keyword2, keyword3" />
+    <title>
+      {% block title %}
+
+      {% endblock title %}
+    </title>
+
+    <!-- Fonts -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chatjs/dist/chat.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/css/tabler-flags.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/css/tabler-payments.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/css/tabler-vendors.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/css/tabler.min.css" />
+
+    <link rel="stylesheet" href="{% static '//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Scripts -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css" integrity="sha512-V0+DPzYyLzIiMiWCg3nNdY+NyIiK9bED/T1xNBj08CaIUyK3sXRpB26OUCIzujMevxY9TRJFHQIxTwgzb0jVLg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta14/dist/js/tabler.min.js"></script>
+    <link rel="stylesheet" type="text/css" property="stylesheet" href="//127.0.0.1:8000/_debugbar/assets/stylesheets?v=1657485702&amp;theme=auto" data-turbolinks-eval="false" data-turbo-eval="false" />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <body class="font-sans antialiased">
+    <div class="page">
+      {% include ".\components\silder.html" %}
+      {% include ".\components\nav.html" %}
+      <div class="page-wrapper">
+        <!-- Page body -->
+        <div class="page-body">
+          {% block body %}
+            <!-- Your block content goes here -->
+          {% endblock body %}
+        </div>
+      </div>
+    </div>
+    {% block extra_js %}
+    <!-- Additional scripts go here -->
+    {% endblock %}
+  </body>
+</html>

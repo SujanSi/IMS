@@ -1,0 +1,62 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        exclude: .*migrations\/|.*\.js$|.*static\/|.*venv\/|.*env\/
+        language_version: python3.11.4
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort (python)
+        exclude: .*migrations\/|.*\.js$|.*static\/|.*venv\/|.*env\/
+
+  - repo: local
+    hooks:
+      - id: pylint
+        entry: pylint
+        language: system
+        name: pylint
+        types: [python]
+        exclude: .*migrations\/|.*\.js$|.*static\/|.*venv\/|.*env\/|manage\.py
+        args:
+          - -rn
+          - -sn
+          - --load-plugins=pylint_django
+          - --django-settings-module=project.settings
+          - --disable=missing-class-docstring
+          - --disable=missing-function-docstring
+          - --disable=missing-module-docstring
+          - --disable=useless-parent-delegation
+          - --disable=no-member
+          - --disable=too-many-ancestors
+          - --disable=E1101
+
+  - repo: https://github.com/Riverside-Healthcare/djLint
+    rev: v1.34.1
+    hooks:
+      - id: djlint-django
+
+  - repo: local
+    hooks:
+      - id: commitizen
+        name: commitizen check
+        entry: cz check --commit-msg-file
+        language: python
+        stages: [commit-msg]
+
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.26.0
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [push]
